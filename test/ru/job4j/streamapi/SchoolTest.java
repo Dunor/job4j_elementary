@@ -4,8 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -16,12 +19,12 @@ public class SchoolTest {
 
     @Before
     public void before() {
-        Student st1 = new Student(50);
-        Student st2 = new Student(60);
-        Student st3 = new Student(40);
-        Student st4 = new Student(70);
-        Student st5 = new Student(100);
-        Student st6 = new Student(30);
+        Student st1 = new Student("Ivanov", 50);
+        Student st2 = new Student("Petrov", 60);
+        Student st3 = new Student("Sidorov", 40);
+        Student st4 = new Student("Nikolaev", 70);
+        Student st5 = new Student("Smirnov", 100);
+        Student st6 = new Student("Kudryashov", 30);
         students = Arrays.asList(st1, st2, st3, st4, st5, st6);
     }
     @Test
@@ -47,4 +50,12 @@ public class SchoolTest {
         List<Student> expected = Arrays.asList(students.get(2), students.get(5));
         assertThat(res, is(expected));
     }
+
+     @Test
+    public void whenListToMap() {
+         Map<String, Student> res = students.stream().distinct().collect(Collectors.toMap(Student::getName, e -> e));
+         System.out.println(res);
+    }
+
+
 }
