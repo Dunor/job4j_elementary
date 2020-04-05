@@ -53,8 +53,7 @@ public class SchoolTest {
 
      @Test
     public void whenListToMap() {
-         Map<String, Student> res = students.stream().distinct().collect(Collectors.toMap(Student::getName, e -> e));
-         System.out.println(res);
+         System.out.println(school.listToMap(students));
     }
 
 
