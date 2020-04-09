@@ -53,8 +53,14 @@ public class SchoolTest {
 
      @Test
     public void whenListToMap() {
-         System.out.println(school.listToMap(students));
+        Map<String,Student> res = school.listToMap(students);
+        Map<String, Student> expected = new HashMap<>();
+        expected.put(students.get(0).getName(), students.get(0));
+        expected.put(students.get(1).getName(), students.get(1));
+        expected.put(students.get(2).getName(), students.get(2));
+        expected.put(students.get(3).getName(), students.get(3));
+        expected.put(students.get(4).getName(), students.get(4));
+        expected.put(students.get(5).getName(), students.get(5));
+        assertThat(res, is(expected));
     }
-
-
 }
